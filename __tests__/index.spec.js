@@ -1,4 +1,4 @@
-import { parseBoard, saveEmptyPositions } from '../lib'
+import * as solver from '../lib'
 
 describe('Sudoku Solver', () => {
   const board = `
@@ -17,7 +17,7 @@ describe('Sudoku Solver', () => {
 
   describe('Parse Board', () => {
     it('should parse the board into a 2D array', () => {
-      parsedBoard = parseBoard(board)
+      parsedBoard = solver.parseBoard(board)
 
       const expectedBoard = [
         [0, 9, 0, 0, 0, 0, 0, 0, 6],
@@ -37,9 +37,9 @@ describe('Sudoku Solver', () => {
     })
   })
 
-  describe('Empty positions', function() {
-    it('should save all of the empty positions, 0s, in a parsed board', function() {
-      const emptyPositions = saveEmptyPositions(parsedBoard)
+  describe('Empty positions', () => {
+    it('should save all of the empty positions, 0s, in a parsed board', () => {
+      const emptyPositions = solver.saveEmptyPositions(parsedBoard)
 
       const expectedPositions = [
         [0, 0],
@@ -97,6 +97,15 @@ describe('Sudoku Solver', () => {
 
       expect(emptyPositions).toHaveLength(51)
       expect(emptyPositions).toEqual(expectedPositions)
+    })
+  })
+
+  describe('Check row for value', () => {
+    it('should check that each value in the row does not equal the input', () => {
+      // Match not found. Return true;
+      expect(solver.checkRow(parsedBoard, 0, 2)).toBeTruthy()
+      // Match found. Return false;
+      expect(solver.checkRow(parsedBoard, 0, 9)).toBeFalsy()
     })
   })
 })

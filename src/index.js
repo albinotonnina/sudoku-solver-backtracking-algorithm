@@ -13,3 +13,8 @@ export const saveEmptyPositions = board => {
     )
     .reduce((a, b) => a.concat(b), [])
 }
+
+export const checkRow = (board, row, search) => {
+  return board[row].filter(value => value === search).length < 1
+}
+
