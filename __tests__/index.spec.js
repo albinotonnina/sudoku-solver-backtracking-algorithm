@@ -157,9 +157,38 @@ describe('Sudoku Solver', () => {
 
   describe('Solve sudoku', function() {
     it('should find a solution to the puzzle string passed in', function() {
-      var solution = solver.solveSudoku(board);
+      var solution = solver.solveSudoku(board)
 
-      expect(solution).toEqual(expectedSolution);
-    });
-  });
+      expect(solution).toEqual(expectedSolution)
+    })
+  })
+})
+
+describe('Solve more sudokus', function() {
+  it('should find a solution to the puzzle string passed in', function() {
+    const board = `
+0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0
+`
+
+    const expectedSolution =`
+1 2 3 4 5 6 7 8 9
+4 5 6 7 8 9 1 2 3
+7 8 9 1 2 3 4 5 6
+2 1 4 3 6 5 8 9 7
+3 6 5 8 9 7 2 1 4
+8 9 7 2 1 4 3 6 5
+5 3 1 6 4 2 9 7 8
+6 4 2 9 7 8 5 3 1
+9 7 8 5 3 1 6 4 2`
+
+    expect(solver.solveSudoku(board)).toEqual(expectedSolution)
+  })
 })
