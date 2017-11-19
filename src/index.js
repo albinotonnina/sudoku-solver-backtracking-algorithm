@@ -18,3 +18,6 @@ export const checkRow = (board, row, search) => {
   return board[row].filter(value => value === search).length < 1
 }
 
+export const checkColumn = (board, column, search) => {
+  return board.filter((row, index) => row[[column]] === search).length < 1
+}

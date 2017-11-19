@@ -108,4 +108,13 @@ describe('Sudoku Solver', () => {
       expect(solver.checkRow(parsedBoard, 0, 9)).toBeFalsy()
     })
   })
+
+  describe('Check column for value', function() {
+    it('should check that each value in a column does not equal the input', function() {
+      // No match. Return true
+      expect(solver.checkColumn(parsedBoard, 0, 9)).toBeTruthy()
+      // Match found. Return false
+      expect(solver.checkColumn(parsedBoard, 0, 5)).toBeFalsy()
+    });
+  });
 })
