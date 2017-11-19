@@ -89,3 +89,10 @@ export const solvePuzzle = (board, emptyPositions) => {
 
   return board.map(row => row.join(' ')).join('\n')
 }
+
+export const solveSudoku = board => {
+  const parsedBoard = parseBoard(board);
+  const emptyPositions = saveEmptyPositions(parsedBoard);
+
+  return solvePuzzle(parsedBoard, emptyPositions);
+};

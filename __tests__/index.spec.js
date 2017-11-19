@@ -154,4 +154,12 @@ describe('Sudoku Solver', () => {
       expect(solution).toEqual(expectedSolution)
     })
   })
+
+  describe('Solve sudoku', function() {
+    it('should find a solution to the puzzle string passed in', function() {
+      var solution = solver.solveSudoku(board);
+
+      expect(solution).toEqual(expectedSolution);
+    });
+  });
 })
