@@ -24,3 +24,6 @@
 
 ### Test
 `npm run test`
+
+### Start
+`npm start`

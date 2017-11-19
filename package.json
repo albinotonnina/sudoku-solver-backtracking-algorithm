@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "npm run compile && node ./lib/index.js",
     "compile": "babel --presets env -d lib/ src/",
     "test": "npm run compile && jest"
   },
