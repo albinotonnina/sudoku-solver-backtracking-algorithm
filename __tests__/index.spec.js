@@ -109,12 +109,34 @@ describe('Sudoku Solver', () => {
     })
   })
 
-  describe('Check column for value', function() {
-    it('should check that each value in a column does not equal the input', function() {
+  describe('Check column for value', () => {
+    it('should check that each value in a column does not equal the input', () => {
       // No match. Return true
       expect(solver.checkColumn(parsedBoard, 0, 9)).toBeTruthy()
       // Match found. Return false
       expect(solver.checkColumn(parsedBoard, 0, 5)).toBeFalsy()
-    });
-  });
+    })
+  })
+
+  describe('Check the 3x3 square for value', () => {
+    it('should check that each value in a 3x3 square does not match the input', () => {
+      // No match. Return true
+      expect(solver.check3x3Square(parsedBoard, 2, 2, 1)).toBeTruthy()
+      expect(solver.check3x3Square(parsedBoard, 7, 7, 9)).toBeTruthy()
+      // Match found. Return false
+      expect(solver.check3x3Square(parsedBoard, 2, 2, 9)).toBeFalsy()
+      expect(solver.check3x3Square(parsedBoard, 7, 7, 1)).toBeFalsy()
+    })
+  })
+
+  describe('Check value', ()=> {
+    it('should check whether a value is valid for a particular position', () => {
+      // No match. Return true
+      expect(solver.checkValue(parsedBoard, 0, 0, 2)).toBeTruthy()
+      expect(solver.checkValue(parsedBoard, 3, 7, 3)).toBeTruthy()
+      // Match found. Return false
+      expect(solver.checkValue(parsedBoard, 0, 0, 9)).toBeFalsy()
+      expect(solver.checkValue(parsedBoard, 3, 7, 1)).toBeFalsy()
+    })
+  })
 })
