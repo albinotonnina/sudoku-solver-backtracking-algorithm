@@ -1,7 +1,8 @@
 import { parseBoard } from '../lib'
 
 describe('Sudoku Solver', () => {
-  const board = `
+  describe('ParseBoard', () => {
+    const board = `
 0 9 0 0 0 0 0 0 6
 0 0 0 9 6 0 4 8 5
 0 0 0 5 8 1 0 0 0
@@ -13,9 +14,8 @@ describe('Sudoku Solver', () => {
 3 0 0 0 9 0 0 0 0
 `
 
-  let parsedBoard
+    let parsedBoard
 
-  describe('ParseBoard', () => {
     it('should parse the board into a 2D array', () => {
       parsedBoard = parseBoard(board)
 
