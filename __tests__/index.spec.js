@@ -13,12 +13,21 @@ describe('Sudoku Solver', () => {
 3 0 0 0 9 0 0 0 0
 `
 
-  let parsedBoard
+  const expectedSolution = `8 9 5 7 4 2 1 3 6
+2 7 1 9 6 3 4 8 5
+4 6 3 5 8 1 7 9 2
+9 3 4 6 1 7 2 5 8
+5 1 7 2 3 8 9 6 4
+6 8 2 4 5 9 3 7 1
+1 5 9 8 7 4 6 2 3
+7 4 6 3 2 5 8 1 9
+3 2 8 1 9 6 5 4 7`
+
+  let parsedBoard = solver.parseBoard(board)
+  let emptyPositions = solver.saveEmptyPositions(parsedBoard)
 
   describe('Parse Board', () => {
     it('should parse the board into a 2D array', () => {
-      parsedBoard = solver.parseBoard(board)
-
       const expectedBoard = [
         [0, 9, 0, 0, 0, 0, 0, 0, 6],
         [0, 0, 0, 9, 6, 0, 4, 8, 5],
@@ -39,8 +48,6 @@ describe('Sudoku Solver', () => {
 
   describe('Empty positions', () => {
     it('should save all of the empty positions, 0s, in a parsed board', () => {
-      const emptyPositions = solver.saveEmptyPositions(parsedBoard)
-
       const expectedPositions = [
         [0, 0],
         [0, 2],
@@ -129,7 +136,7 @@ describe('Sudoku Solver', () => {
     })
   })
 
-  describe('Check value', ()=> {
+  describe('Check value', () => {
     it('should check whether a value is valid for a particular position', () => {
       // No match. Return true
       expect(solver.checkValue(parsedBoard, 0, 0, 2)).toBeTruthy()
@@ -137,6 +144,14 @@ describe('Sudoku Solver', () => {
       // Match found. Return false
       expect(solver.checkValue(parsedBoard, 0, 0, 9)).toBeFalsy()
       expect(solver.checkValue(parsedBoard, 3, 7, 1)).toBeFalsy()
+    })
+  })
+
+  describe('Solve the puzzle', () => {
+    it('should find a solution to the puzzle passed in', () => {
+      const solution = solver.solvePuzzle(parsedBoard, emptyPositions)
+
+      expect(solution).toEqual(expectedSolution)
     })
   })
 })

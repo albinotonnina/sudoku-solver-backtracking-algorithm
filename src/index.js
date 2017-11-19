@@ -59,3 +59,33 @@ export const checkValue = (board, column, row, search) => {
     check3x3Square(board, column, row, search)
   )
 }
+
+export const solvePuzzle = (board, emptyPositions) => {
+  const limit = 9
+
+  for (let i = 0; i < emptyPositions.length; ) {
+    const row = emptyPositions[i][0]
+    const column = emptyPositions[i][1]
+    let value = board[row][column] + 1
+    let found = false
+
+    while (!found && value <= limit) {
+      if (checkValue(board, column, row, value)) {
+        found = true
+        board[row][column] = value
+        i++
+      } else {
+        value++
+      }
+    }
+
+    // If no valid value was found and the limit was
+    // reached, move back to the previous position
+    if (!found) {
+      board[row][column] = 0
+      i--
+    }
+  }
+
+  return board.map(row => row.join(' ')).join('\n')
+}
