@@ -1,5 +1,7 @@
 ## Sudoku Solver
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/albinotonnina/sudoku-solver-backtracking-algorithm.svg)](https://greenkeeper.io/)
+
 ### Solved with a backtracking algorithm
 
 ![alt text](solution.gif "Sudoku Solver Backtracking algorithm")
